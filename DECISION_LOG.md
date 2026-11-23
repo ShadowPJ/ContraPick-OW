@@ -60,3 +60,10 @@ Revisor: APPROVED (D-004 fix round). Tester: final re-gate PASS. 320px library-d
 Published: https://claude.ai/artifact/LMx24Reh6Hq5XEUZENHGWm (Version 4). Excluded: design-system/, img/manifest.json, fonts/fonts.css.txt (verified in file listing).
 Backlog (low): load() dedupe of tampered stored ids; skeleton tiles instead of measured min-heights; keys for 25 heroes with keysVerified:false.
 Drafted by: Manager
+
+## 2026-11-23 — GitHub repo, README and GitHub Pages (D-005)
+Context: Principal asked to push to https://github.com/ShadowPJ/ContraPick-OW, add a README with images, and publish on GitHub Pages.
+Decision: Pages served from `main` / root (static site, no build, no Actions needed). index.html becomes a full HTML document (doctype, lang, viewport) since Pages has no artifact wrapper; `.nojekyll` added. README (Spanish) by Documentation with optimised screenshots in docs/screenshots/. Commits authored with the GitHub noreply address (Principal choice).
+Consequences: Site public at https://shadowpj.github.io/ContraPick-OW/ (repo already public). Artifact stays as a second deployment.
+Approver: Principal (requested 2026-11-23)
+Drafted by: Manager
