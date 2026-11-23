@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Biblioteca de héroes</title>
+<link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/barlowcondensed-700-italic.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/barlowcondensed-600.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/jost-variable.woff2">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="mark" aria-hidden="true"><span>CP</span></div>
+      <div>
+        <h1>Biblioteca</h1>
+        <p class="sub">Habilidades de cada héroe y contra quién rinde mejor o peor.</p>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Principal">
+      <a href="index.html"><span>Contrapick</span></a>
+      <a href="biblioteca.html" aria-current="page"><span>Biblioteca</span></a>
+    </nav>
+  </header>
+
+  <main>
+  <div class="lib" id="lib">
+    <section class="panel stack list" aria-label="Héroes">
+      <div class="row">
+        <div class="seg" role="group" aria-label="Filtrar por rol">
+          <button data-filter="all" aria-pressed="true"><span>Todos</span></button>
+          <button data-filter="tank" aria-pressed="false"><span>Tanque</span></button>
+          <button data-filter="dmg" aria-pressed="false"><span>Daño</span></button>
+          <button data-filter="sup" aria-pressed="false"><span>Apoyo</span></button>
+        </div>
+        <input type="search" id="q" placeholder="Buscar héroe o habilidad…" aria-label="Buscar por héroe o habilidad" autocomplete="off">
+      </div>
+      <p class="hint" id="count" aria-live="polite">Cargando héroes…</p>
+      <p class="err" id="load-note" hidden></p>
+      <div class="cards loading" id="cards"></div>
+    </section>
+
+    <section class="panel detail" id="detail" aria-label="Detalle del héroe"><div class="d-body" id="detail-body"></div></section>
+    <p class="sr-only" role="status" id="sel-status"></p>
+  </div>
+  </main>
+
+  <footer>
+    <span id="ver"></span>
+    Proyecto de fans, sin relación con Blizzard Entertainment. Overwatch y los nombres de sus héroes y habilidades son marcas de Blizzard.
+    Las descripciones son un resumen y pueden quedar desfasadas con cada parche. Los cruces «fuerte / débil contra» son los mismos que usa Contrapick (counterwatch.gg, consultado el 22 nov 2026).
+  </footer>
+</div>
+
+<script src="common.js"></script>
+<script>
+(function () {
+  if (!window.CP) { // common.js no cargó: mensaje visible en vez de una página muerta
+    const c = document.getElementById("cards"); if (c) c.classList.remove("loading"), c.textContent = "No se pudo cargar common.js: comprueba que el archivo está junto a la página.";
+    const n = document.getElementById("count"); if (n) n.textContent = "";
+    return;
+  }
+  const { $, esc, norm, portrait, ROLE_NAME } = window.CP; // helpers compartidos (common.js)
+
+  /* Vocabulario de `slot` en abilities.json: passive | primary | secondary | ability1 | ability2 | ability3 | ultimate
+     (cualquier otro valor se ordena al final).
+     Reglas de visualización:
+       - Recuadro de tecla (.key): muestra `key` (p. ej. "Shift", "E", "Clic izq.", "Clic izq. (piloto)"). Se sustituye por la etiqueta corta
+         del slot (SLOT_KEY) si: el héroe tiene keysVerified === false, `key` está vacío, o es genérico ("Hab.", "Hab. 2").
+       - Claves largas (> 12 car.) usan la variante ancha (.ab.wide): el recuadro va encima del texto en vez de a la izquierda.
+       - Etiqueta junto al nombre (.ab-tag): solo para pasiva y definitiva, y solo cuando el recuadro no la repite.
+       - La definitiva (puede haber varias, p. ej. Anran) va al final y resaltada (.ult). `tr: true` en una habilidad = texto traducido
+         por nosotros, no oficial: marca discreta "(trad.)" tras el nombre. */
+  const SLOT_ORDER = ["passive", "primary", "secondary", "ability1", "ability2", "ability3", "ultimate"];
+  const SLOT_TAG = { passive: "Pasiva", ultimate: "Definitiva" };
+  const SLOT_KEY = { passive: "Pasiva", primary: "Principal", secondary: "Secundario", ability1: "Habilidad", ability2: "Habilidad", ability3: "Habilidad", ultimate: "Definitiva" };
+
+  let D = null, A = null, hasAbilities = false;
+  const byId = Object.create(null);
+  const S = { q: "", filter: "all" };
+  let lastId = "";
+
+  const hasOwn = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
+  const isMobile = () => window.matchMedia("(max-width: 979px)").matches;
+  const currentId = () => { try { return decodeURIComponent(location.hash.slice(1)); } catch (e) { return ""; } };
+
+  // abilities.json es dato no fiable: se normaliza cada entrada antes de usarla (S-02).
+  function cleanAbilities(raw) {
+    const out = Object.create(null);
+    if (!raw || typeof raw !== "object") return out;
+    for (const id of Object.keys(raw)) {
+      const a = raw[id];
+      if (!a || typeof a !== "object") continue;
+      out[id] = {
+        subrole: typeof a.subrole === "string" ? a.subrole : "",
+        summary: typeof a.summary === "string" ? a.summary : "",
+        verified: a.verified,
+        keysVerified: a.keysVerified, // false => no se fía de las teclas: se muestra la etiqueta del slot
+        source: typeof a.source === "string" ? a.source : "",
+        abilities: Array.isArray(a.abilities) ? a.abilities.filter((x) => x && typeof x === "object" && !Array.isArray(x)) : []
+      };
+    }
+    return out;
+  }
+  const abOf = (id) => (A && A[id]) || null;
+
+  // ---- Lista ----
+  function match(h, q) { // null | { by: "name" } | { by: "ability", name }
+    if (!q) return { by: "name" };
+    if (norm(h.name).includes(q)) return { by: "name" };
+    const a = abOf(h.id);
+    if (a) {
+      if (norm(a.subrole).includes(q)) return { by: "name" };
+      const hit = a.abilities.find((x) => norm(x.name).includes(q));
+      if (hit) return { by: "ability", name: String(hit.name) };
+    }
+    return null;
+  }
+  function renderList() {
+    $("cards").classList.remove("loading");
+    const q = norm(S.q).trim();
+    const out = [];
+    D.heroes.forEach((h) => {
+      if (S.filter !== "all" && h.role !== S.filter) return;
+      const m = match(h, q);
+      if (m) out.push({ h, m });
+    });
+    out.sort((a, b) => (a.m.by === "ability") - (b.m.by === "ability")); // coincidencias por nombre de héroe antes que por habilidad (sort estable)
+    $("count").textContent = out.length + " de " + D.heroes.length + " héroes";
+    $("cards").innerHTML = out.length ? out.map(({ h, m }, i) => {
+      const a = abOf(h.id), sub = a && a.subrole ? " · " + a.subrole : "";
+      return `<a class="hero r-${esc(h.role)}" href="#${encodeURIComponent(h.id)}" data-id="${esc(h.id)}" aria-label="${esc(h.name)}, ${esc(ROLE_NAME[h.role])}${esc(sub)}">
+        ${portrait(h, "l", i < 12)}<span class="nm">${esc(h.name)}</span><span class="meta">${esc(ROLE_NAME[h.role])}${esc(sub)}</span>
+        ${m.by === "ability" ? `<span class="hit">${esc(m.name)}</span>` : ""}</a>`;
+    }).join("") : `<p class="empty span-all">Ningún héroe ni habilidad coincide con “${esc(S.q)}”.</p>`;
+    markCurrent();
+  }
+  function markCurrent() {
+    const cur = currentId();
+    document.querySelectorAll("#cards .hero").forEach((c) => { if (c.dataset.id === cur) c.setAttribute("aria-current", "true"); else c.removeAttribute("aria-current"); });
+  }
+
+  // ---- Detalle ----
+  const matchupChips = (ids) => {
+    const hs = (Array.isArray(ids) ? ids : []).map((id) => byId[id]).filter(Boolean);
+    return hs.length ? `<div class="chips">${hs.map((x) => `<a class="chip r-${esc(x.role)}" href="#${encodeURIComponent(x.id)}">${portrait(x, "xs")}${esc(x.name)}</a>`).join("")}</div>` : `<p class="hint">Sin datos.</p>`;
+  };
+  function abilitiesHtml(a) {
+    if (!hasAbilities) return `<p class="err">No se pudo cargar abilities.json, así que no hay habilidades que mostrar. El resto de datos sí está disponible.</p>`;
+    if (!a || !a.abilities.length) return `<p class="empty">Todavía no tenemos las habilidades de este héroe.</p>`;
+    const ord = (x) => { const i = SLOT_ORDER.indexOf(x.slot); return i < 0 ? 50 : i; };
+    const list = a.abilities.map((x, i) => [x, i]).sort((p, q) => ord(p[0]) - ord(q[0]) || p[1] - q[1]).map((p) => p[0]);
+    return `<ul class="abil">${list.map((x) => {
+      const slotLbl = hasOwn(SLOT_KEY, x.slot) ? SLOT_KEY[x.slot] : "—";
+      const raw = typeof x.key === "string" ? x.key.trim() : "";
+      const generic = raw === "" || /^hab\.?(\s*\d+)?$/i.test(raw);
+      const label = a.keysVerified === false || generic ? slotLbl : raw;
+      const tag = hasOwn(SLOT_TAG, x.slot) && label !== SLOT_TAG[x.slot] ? SLOT_TAG[x.slot] : "";
+      return `<li class="ab ${x.slot === "ultimate" ? "ult" : ""} ${label.length > 12 ? "wide" : ""}">
+        <span class="key">${esc(label)}</span>
+        <div><div class="ab-name"><span>${esc(x.name)}</span>${x.tr === true ? '<span class="tr">(trad.)</span>' : ""}${tag ? `<span class="ab-tag">${tag}</span>` : ""}</div>
+        <p class="ab-desc">${esc(x.desc)}</p></div></li>`;
+    }).join("")}</ul>`;
+  }
+  // Enlace a la fuente: solo http/https, se muestra el hostname y el href sale de URL.href (S-03).
+  function sourceHtml(raw) {
+    let u; try { u = new URL(raw); } catch (e) { return ""; }
+    if (u.protocol !== "https:" && u.protocol !== "http:") return "";
+    return `<p class="hint">Fuente: <a href="${esc(u.href)}" target="_blank" rel="noopener noreferrer">${esc(u.hostname)}</a></p>`;
+  }
+  function renderDetail() {
+    const id = currentId(), el = $("detail-body"), lib = $("lib");
+    lib.classList.toggle("has-sel", !!id);
+    document.title = "Biblioteca de héroes";
+    el.scrollTop = 0; // el panel sticky tiene su propio scroll
+    if (!id) {
+      el.innerHTML = `<h2>Elige un héroe</h2><p class="hint">Pulsa un héroe de la lista para ver su kit, su definitiva y contra quién rinde mejor o peor.</p>`;
+      return;
+    }
+    const h = byId[id];
+    if (!h) {
+      el.innerHTML = `<a class="back" href="#">← Todos los héroes</a><h2>Héroe no encontrado</h2><p class="hint">No hay ningún héroe con el identificador «${esc(id)}».</p>`;
+      return;
+    }
+    document.title = h.name + " · Biblioteca de héroes";
+    const a = abOf(id);
+    el.innerHTML = `
+      <a class="back" href="#">← Todos los héroes</a>
+      <div class="d-head r-${esc(h.role)}">
+        ${portrait(h, "xl", true)}
+        <div class="stack gap-xs">
+          <h2 class="d-name" id="d-name" tabindex="-1">${esc(h.name)}</h2>
+          <div class="row"><span class="rolechip">${esc(ROLE_NAME[h.role])}</span>${a && a.subrole ? `<span class="role-word">${esc(a.subrole)}</span>` : ""}</div>
+        </div>
+      </div>
+      ${a && a.verified === false ? `<p class="unver">Datos sin verificar: contrasta las habilidades con el juego antes de fiarte.</p>` : ""}
+      ${a && a.summary ? `<p class="summary">${esc(a.summary)}</p>` : ""}
+      <div class="stack gap-s"><h3 class="label">Habilidades</h3>${abilitiesHtml(a)}</div>
+      <div class="stack gap-s"><h3 class="label">Fuerte contra</h3>${matchupChips(h.beats)}</div>
+      <div class="stack gap-s"><h3 class="label">Débil contra</h3>${matchupChips(h.losesTo)}</div>
+      ${a ? sourceHtml(a.source) : ""}`;
+  }
+
+  let first = true;
+  function onNav() {
+    const prev = $("lib").classList.contains("has-sel");
+    renderDetail(); markCurrent();
+    const id = currentId();
+    if (first) { first = false; return; }
+    if (!isMobile()) { // escritorio: el foco no se mueve (la lista sigue visible); se anuncia el héroe mostrado con la región role=status
+      $("sel-status").textContent = byId[id] ? "Mostrando " + byId[id].name : "";
+      return;
+    }
+    if (id) {
+      const n = $("d-name"); if (n) n.focus({ preventScroll: true });
+      window.scrollTo(0, 0);
+    } else if (prev) { // vuelta a la lista: reencuentra la última tarjeta y devuélvele el foco
+      const c = document.querySelector('#cards .hero[data-id="' + CSS.escape(lastId) + '"]');
+      if (c) { c.scrollIntoView({ block: "center" }); c.focus({ preventScroll: true }); }
+    }
+  }
+  document.addEventListener("click", (ev) => {
+    const c = ev.target.closest("#cards .hero"); if (c) lastId = c.dataset.id;
+    const f = ev.target.closest("[data-filter]");
+    if (f) {
+      S.filter = f.dataset.filter;
+      document.querySelectorAll("[data-filter]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.filter === S.filter)));
+      renderList();
+    }
+  });
+  window.addEventListener("hashchange", () => { if (D) onNav(); });
+  $("q").addEventListener("input", (e) => { S.q = e.target.value; renderList(); });
+
+  function init(heroes, abil) {
+    D = heroes; D.heroes.forEach((h) => (byId[h.id] = h));
+    if (abil && abil.heroes && typeof abil.heroes === "object") {
+      A = cleanAbilities(abil.heroes); hasAbilities = true;
+      if (typeof abil.version === "string") $("ver").textContent = "Habilidades: " + abil.version + ".";
+    } else {
+      const n = $("load-note"); n.hidden = false;
+      n.textContent = "No se pudo cargar abilities.json: la búsqueda solo cubre nombres de héroe y no se mostrarán habilidades.";
+    }
+    renderList(); onNav();
+  }
+  const getJson = (u) => fetch(u).then((r) => { if (!r.ok) throw new Error(u + ": HTTP " + r.status); return r.json(); });
+  Promise.all([getJson("heroes.json"), getJson("abilities.json").catch((e) => { console.error("Biblioteca: no se pudo cargar abilities.json", e); return null; })]).then(
+    ([heroes, abil]) => {
+      try { init(heroes, abil); } catch (e) { // datos recibidos pero con forma inesperada, o fallo al pintar
+        console.error("Biblioteca: error al procesar o pintar los datos", e);
+        $("count").textContent = "";
+        $("cards").classList.remove("loading"); $("cards").innerHTML = `<p class="err">Se cargaron los datos pero no se pudieron mostrar: el formato no es el esperado.</p>`;
+      }
+    },
+    (e) => { // red, HTTP o JSON inválido en heroes.json
+      console.error("Biblioteca: no se pudo cargar heroes.json", e);
+      $("count").textContent = "";
+      $("cards").classList.remove("loading"); $("cards").innerHTML = `<p class="err">No se pudo cargar heroes.json. Comprueba que el archivo está junto a la página y que el JSON es válido.</p>`;
+    }
+  );
+})();
+</script>
+</body>
+</html>

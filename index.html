@@ -1,0 +1,334 @@
+<meta charset="utf-8">
+<title>Contrapick</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/barlowcondensed-700-italic.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/barlowcondensed-600.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/jost-variable.woff2">
+<link rel="stylesheet" href="styles.css">
+
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="mark" aria-hidden="true"><span>CP</span></div>
+      <div>
+        <h1>Contrapick</h1>
+        <p class="sub">Marca la composición enemiga y te digo qué héroe sacar en tu rol, con el porqué.</p>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Principal">
+      <a href="index.html" aria-current="page"><span>Contrapick</span></a>
+      <a href="biblioteca.html"><span>Biblioteca</span></a>
+    </nav>
+  </header>
+
+  <main>
+  <div class="grid">
+    <div class="stack">
+      <section class="panel stack" aria-label="Equipos">
+        <div class="row between">
+          <div class="seg" role="group" aria-label="Al pulsar un héroe se añade a">
+            <button id="mode-enemy" data-mode="enemy" aria-pressed="true"><span>Enemigos</span></button>
+            <button id="mode-ally" data-mode="ally" aria-pressed="false"><span>Mi equipo</span></button>
+            <button id="mode-pool" data-mode="pool" aria-pressed="false"><span>★ Mi pool</span></button>
+          </div>
+          <button class="btn" id="clear"><span>Limpiar equipos</span></button>
+        </div>
+        <p class="hint" id="mode-hint"></p>
+        <div class="team">
+          <div class="team-head"><h2>Equipo enemigo</h2><span class="count" id="enemy-count"></span></div>
+          <div class="slots" id="enemy-slots"></div>
+        </div>
+        <div class="team">
+          <div class="team-head"><h2>Mi equipo <span class="role-word">(opcional, sin contarte a ti)</span></h2><span class="count" id="ally-count"></span></div>
+          <div class="slots allies" id="ally-slots"></div>
+        </div>
+      </section>
+
+      <section class="panel stack" aria-label="Héroes">
+        <div class="row">
+          <div class="seg" role="group" aria-label="Filtrar por rol">
+            <button id="f-all" data-filter="all" aria-pressed="true"><span>Todos</span></button>
+            <button id="f-tank" data-filter="tank" aria-pressed="false"><span>Tanque</span></button>
+            <button id="f-dmg" data-filter="dmg" aria-pressed="false"><span>Daño</span></button>
+            <button id="f-sup" data-filter="sup" aria-pressed="false"><span>Apoyo</span></button>
+          </div>
+          <input type="search" id="search" placeholder="Buscar héroe…" aria-label="Buscar héroe">
+        </div>
+        <div class="roster loading" id="roster"><p class="hint">Cargando héroes…</p></div>
+      </section>
+    </div>
+
+    <div class="results stack">
+      <section class="panel stack" aria-label="Recomendaciones">
+        <div id="example-bar" class="loading"></div>
+        <div class="row between">
+          <h2>Qué sacar</h2>
+          <label class="check"><input type="checkbox" id="only-pool"> Solo mi pool</label>
+        </div>
+        <div class="seg" role="group" aria-label="Mi rol">
+          <button id="r-tank" data-role="tank" aria-pressed="false"><span>Tanque</span></button>
+          <button id="r-dmg" data-role="dmg" aria-pressed="true"><span>Daño</span></button>
+          <button id="r-sup" data-role="sup" aria-pressed="false"><span>Apoyo</span></button>
+          <button id="r-all" data-role="all" aria-pressed="false"><span>Cualquiera</span></button>
+        </div>
+        <ol class="picks loading" id="picks"></ol>
+        <div id="pool-note"></div>
+        <div class="stack gap-s">
+          <span class="label">Evita</span>
+          <div class="avoid" id="avoid"></div>
+        </div>
+      </section>
+
+      <section class="panel stack" aria-label="Lectura del enemigo">
+        <h2>Lectura del enemigo</h2>
+        <div class="threats" id="threats"></div>
+      </section>
+    </div>
+  </div>
+  </main>
+
+  <footer id="footer">
+    <span id="data-version">54 héroes (Temporada 5, nov 2026).</span>
+    Los counters directos son el top 5 de cada héroe en counterwatch.gg (duelos y peleas de equipo, consultado el 22 nov 2026) y las reglas de tags salen del kit de cada héroe.
+    No son estadísticas oficiales y cambian con cada parche: ajústalos en <code>heroes.json</code>. Proyecto de fans, sin relación con Blizzard.
+  </footer>
+</div>
+
+<script src="common.js"></script>
+<script>
+(function () {
+  if (!window.CP) { // common.js no cargó: mensaje visible en vez de una página muerta
+    const r = document.getElementById("roster"); document.querySelectorAll(".loading").forEach((e) => e.classList.remove("loading"));
+    if (r) r.textContent = "No se pudo cargar common.js: comprueba que el archivo está junto a la página.";
+    return;
+  }
+  const { $, esc, portrait, ROLE_NAME } = window.CP; // helpers compartidos (common.js)
+  const MAX = { enemy: 5, ally: 4 };
+  const EXAMPLE = ["winston", "tracer", "genji", "kiriko", "lucio"];
+  const THREATS = [
+    { tag: "aereo", min: 1, title: "Aéreos", text: "Saca hitscan para castigarlos.", counter: "hitscan" },
+    { tag: "dive", min: 2, title: "Dive", text: "Juega agrupado y prioriza peel para tus apoyos.", counter: "peel" },
+    { tag: "sustain", min: 2, title: "Mucha curación", text: "Concentra daño en un objetivo y busca anticuración.", counter: "antiheal" },
+    { tag: "escudo", min: 1, title: "Barreras", text: "Héroes que rompen o ignoran barreras rinden más.", counter: "antiescudo" },
+    { tag: "proyectil", min: 3, title: "Mucho proyectil", text: "Matriz, absorción o desvío anulan gran parte de su daño.", counter: "come_proy" },
+    { tag: "largo", min: 2, title: "Poke a distancia", text: "Cierra distancia con dive o tápalo con barrera.", counter: "dive" },
+    { tag: "corto", min: 3, title: "Brawl a corta", text: "No entres a su rango: kitea y castiga desde lejos.", counter: "largo" },
+    { tag: "estatico", min: 2, title: "Backline estática", text: "Sus héroes se mueven poco: vulnerable a flankers.", counter: "dive" }
+  ];
+
+  let D = null, byId = Object.create(null);
+  const S = { enemy: [], ally: [], pool: [], mode: "enemy", filter: "all", role: "dmg", onlyPool: false, q: "", example: false };
+
+  const fmt = (v) => (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixed(1);
+
+  function save() { try { localStorage.setItem("contrapick", JSON.stringify({ enemy: S.enemy, ally: S.ally, pool: S.pool, role: S.role, onlyPool: S.onlyPool })); } catch (e) {} }
+  function load() {
+    // Misma clave y misma forma que antes; solo se aceptan campos conocidos y con el tipo esperado.
+    try {
+      const v = JSON.parse(localStorage.getItem("contrapick") || "null");
+      if (!v || typeof v !== "object" || Array.isArray(v)) return false;
+      const ids = (a, max) => (Array.isArray(a) ? a.filter((id) => typeof id === "string" && byId[id]).slice(0, max) : []);
+      S.enemy = ids(v.enemy, MAX.enemy); S.ally = ids(v.ally, MAX.ally); S.pool = ids(v.pool, Infinity);
+      if (["tank", "dmg", "sup", "all"].includes(v.role)) S.role = v.role;
+      S.onlyPool = v.onlyPool === true;
+      return true;
+    } catch (e) {}
+    return false;
+  }
+
+  // ---- Motor de puntuación ----
+  function hasTag(h, t) { return t === "@tank" ? h.role === "tank" : h.tags.includes(t); }
+  function adv(a, b) { // ventajas por reglas de a sobre b
+    const out = [];
+    for (const r of D.rules) if (hasTag(a, r.from) && hasTag(b, r.to)) out.push(r);
+    return out;
+  }
+  function pair(a, b) {
+    const pos = adv(a, b), neg = adv(b, a);
+    let v = pos.reduce((s, r) => s + r.w, 0) - neg.reduce((s, r) => s + r.w, 0);
+    v = Math.max(-2, Math.min(2, v));
+    const reasons = [];
+    pos.forEach((r) => reasons.push({ key: "p:" + r.from + r.to, text: r.pos, sign: 1, w: r.w }));
+    neg.forEach((r) => reasons.push({ key: "n:" + r.from + r.to, text: r.neg, sign: -1, w: r.w }));
+    const up = direct(a, b), down = direct(b, a);
+    if (up) { v += up; reasons.push({ key: "p:beats", text: "Counter según estadísticas", sign: 1, w: up }); }
+    if (down) { v -= down; reasons.push({ key: "n:beats", text: "Te counterean según estadísticas", sign: -1, w: down }); }
+    return { v: Math.max(-4, Math.min(4, v)), reasons };
+  }
+  function direct(a, b) { // a countera a b según beats de a y losesTo de b
+    const x = (a.beats || []).includes(b.id), y = (b.losesTo || []).includes(a.id);
+    return x && y ? 2.5 : x || y ? 2 : 0;
+  }
+  function evaluate(c) {
+    const enemies = S.enemy.map((id) => byId[id]);
+    const allies = S.ally.map((id) => byId[id]);
+    const agg = {};
+    let total = 0;
+    for (const e of enemies) {
+      const p = pair(c, e);
+      total += p.v;
+      for (const r of p.reasons) {
+        const k = agg[r.key + r.text] || (agg[r.key + r.text] = { text: r.text, sign: r.sign, w: 0, who: [] });
+        k.w += r.w; k.who.push(e.name);
+      }
+    }
+    for (const a of allies) {
+      const s = D.synergies.find((x) => (x.a === c.id && x.b === a.id) || (x.b === c.id && x.a === a.id));
+      if (s) { total += 1.5; const k = (agg["syn" + s.text] = { text: s.text, sign: 1, w: 1.5, who: [a.name], syn: true }); }
+      if (a.style === c.style) { total += 0.4; const k = agg["style"] || (agg["style"] = { text: "Encaja con el estilo " + c.style + " de tu equipo", sign: 1, w: 0, who: [], syn: true }); k.w += 0.4; k.who.push(a.name); }
+    }
+    const reasons = Object.values(agg).sort((x, y) => y.w - x.w);
+    return { hero: c, score: Math.round(total * 10) / 10, pos: reasons.filter((r) => r.sign > 0), neg: reasons.filter((r) => r.sign < 0) };
+  }
+  function ranked(ignorePool) {
+    let cands = D.heroes.filter((h) => (S.role === "all" || h.role === S.role) && !S.ally.includes(h.id));
+    if (!ignorePool && S.onlyPool && S.pool.length) cands = cands.filter((h) => S.pool.includes(h.id));
+    return cands.map(evaluate).sort((a, b) => b.score - a.score || a.hero.name.localeCompare(b.hero.name));
+  }
+
+
+  // ---- Render ----
+  function renderSlots(kind) {
+    const list = S[kind], max = MAX[kind];
+    let html = "";
+    for (let i = 0; i < max; i++) {
+      const h = byId[list[i]];
+      html += h
+        ? `<button class="slot filled r-${esc(h.role)}" data-remove="${kind}" data-id="${esc(h.id)}" aria-label="Quitar ${esc(h.name)}">${portrait(h, "s", true)}<span class="nm">${esc(h.name)}</span><span class="x">quitar</span></button>`
+        : `<div class="slot">vacío</div>`;
+    }
+    $(kind + "-slots").innerHTML = html;
+    $(kind + "-slots").classList.toggle("target-on", S.mode === kind);
+    $(kind + "-count").textContent = list.length + "/" + max;
+  }
+  function renderRoster() {
+    const q = S.q.trim().toLowerCase();
+    const hs = D.heroes.filter((h) => (S.filter === "all" || h.role === S.filter) && (!q || h.name.toLowerCase().includes(q)));
+    $("roster").innerHTML = hs.length ? hs.map((h, i) => {
+      const en = S.enemy.includes(h.id), al = S.ally.includes(h.id), st = S.pool.includes(h.id);
+      const state = [en ? "en el equipo enemigo" : "", al ? "en tu equipo" : "", st ? "en tu pool" : ""].filter(Boolean).join(", ");
+      return `<button class="hero r-${esc(h.role)} ${en ? "is-enemy" : ""} ${al ? "is-ally" : ""}" data-hero="${esc(h.id)}" aria-label="${esc(h.name)}, ${ROLE_NAME[h.role]}${state ? ", " + state : ""}">
+        ${portrait(h, "l", i < 12)}<span class="nm">${esc(h.name)}</span>
+        ${en ? '<span class="flag">ENE</span>' : al ? '<span class="flag">ALI</span>' : ""}
+        ${st ? '<span class="star" aria-hidden="true">★</span>' : ""}</button>`;
+    }).join("") : `<p class="hint">Ningún héroe coincide con “${esc(S.q)}”.</p>`;
+  }
+  function renderControls() {
+    document.querySelectorAll("[data-mode]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.mode === S.mode)));
+    document.querySelectorAll("[data-filter]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.filter === S.filter)));
+    document.querySelectorAll("[data-role]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.role === S.role)));
+    $("only-pool").checked = S.onlyPool;
+    $("mode-hint").textContent = S.mode === "enemy" ? "Pulsa héroes de la lista para añadirlos al equipo enemigo. Pulsa una casilla para quitarlo."
+      : S.mode === "ally" ? "Pulsa héroes para añadirlos a tu equipo: suma sinergias a las recomendaciones."
+      : "Pulsa los héroes que sabes jugar para marcarlos con ★. Luego activa «Solo mi pool».";
+    $("example-bar").innerHTML = S.example
+      ? `<div class="example"><span>Ejemplo cargado: una composición dive. Cámbiala por la de tu partida.</span><button id="dismiss-example">Empezar de cero</button></div>` : "";
+  }
+  function renderResults() {
+    const picks = $("picks"), avoid = $("avoid"), note = $("pool-note");
+    if (!S.enemy.length) {
+      picks.innerHTML = `<li class="empty">Añade al menos un héroe enemigo para ver recomendaciones.</li>`;
+      avoid.innerHTML = `<span class="hint">—</span>`; note.innerHTML = "";
+      $("threats").innerHTML = `<p class="hint">Aquí verás qué amenaza su composición y cómo responder.</p>`;
+      return;
+    }
+    const list = ranked(false);
+    const max = Math.max(1, ...list.map((r) => Math.abs(r.score)));
+    if (!list.length) {
+      picks.innerHTML = `<li class="empty">No tienes héroes de este rol en tu pool. Márcalos en «★ Mi pool» o desactiva el filtro.</li>`;
+    } else {
+      picks.innerHTML = list.slice(0, 5).map((r, i) => {
+        const cls = r.score > 0 ? "pos" : r.score < 0 ? "neg" : "";
+        const color = r.score >= 0 ? "var(--good)" : "var(--bad)";
+        const pos = r.pos.slice(0, 3).map((x) => `<li class="p"><span>+</span><span>${esc(x.text)} <em>(${esc(x.who.join(", "))})</em></span></li>`).join("");
+        const neg = r.neg.slice(0, 1).map((x) => `<li class="n"><span>−</span><span>${esc(x.text)} <em>(${esc(x.who.join(", "))})</em></span></li>`).join("");
+        return `<li class="pick r-${esc(r.hero.role)} ${i === 0 ? "top" : ""}">
+          <div class="pick-head">
+            <span class="rank">#${i + 1}</span>
+            ${portrait(r.hero, "m")}
+            <div class="who"><h3>${esc(r.hero.name)}</h3><span class="role-word">${ROLE_NAME[r.hero.role]}</span></div>
+            <span class="score ${cls}">${fmt(r.score)}</span>
+          </div>
+          <div class="bar" aria-hidden="true"><i style="width:${Math.round(Math.abs(r.score) / max * 100)}%;background:${color}"></i></div>
+          <ul class="why">${pos || '<li class="hint">Sin ventajas claras: elige por comodidad.</li>'}${neg}</ul>
+          <div class="pick-foot"><a class="more" href="biblioteca.html#${encodeURIComponent(r.hero.id)}" aria-label="Ver habilidades de ${esc(r.hero.name)}">Ver habilidades →</a></div></li>`;
+      }).join("");
+    }
+    const worst = list.slice(-3).reverse().filter((r) => r.score < 0);
+    avoid.innerHTML = worst.length ? worst.map((r) => `<span class="chip r-${esc(r.hero.role)}">${portrait(r.hero, "xs")}${esc(r.hero.name)} <span class="score neg">${fmt(r.score)}</span></span>`).join("") : `<span class="hint">Nada especialmente malo en este rol.</span>`;
+
+    note.innerHTML = "";
+    if (S.onlyPool && S.pool.length && list.length) {
+      const best = ranked(true)[0];
+      if (best && !S.pool.includes(best.hero.id) && best.score > list[0].score + 1)
+        note.innerHTML = `<p class="hint">Fuera de tu pool, el mejor sería <b>${esc(best.hero.name)}</b> (${fmt(best.score)}).</p>`;
+    }
+
+    const enemies = S.enemy.map((id) => byId[id]);
+    const t = THREATS.map((th) => {
+      const who = enemies.filter((e) => hasTag(e, th.tag));
+      if (who.length < th.min) return "";
+      const ans = D.heroes.filter((h) => hasTag(h, th.counter) && (S.role === "all" || h.role === S.role)).map((h) => h.name).slice(0, 5);
+      return `<div class="threat"><b>${th.title}</b> · ${esc(who.map((e) => e.name).join(", "))}<p>${th.text}${ans.length ? " En tu rol: " + esc(ans.join(", ")) + "." : ""}</p></div>`;
+    }).join("");
+    $("threats").innerHTML = t || `<p class="hint">Composición equilibrada: no destaca ninguna amenaza concreta.</p>`;
+  }
+  const clearLoading = () => document.querySelectorAll(".loading").forEach((e) => e.classList.remove("loading")); // quita TODAS las reservas de altura (éxito o fallo)
+  function render() { clearLoading(); renderControls(); renderSlots("enemy"); renderSlots("ally"); renderRoster(); renderResults(); }
+
+  // ---- Interacción ----
+  function clickHero(id) {
+    if (S.mode === "pool") {
+      S.pool = S.pool.includes(id) ? S.pool.filter((x) => x !== id) : [...S.pool, id];
+    } else {
+      const k = S.mode;
+      if (S[k].includes(id)) S[k] = S[k].filter((x) => x !== id);
+      else if (S[k].length < MAX[k]) S[k] = [...S[k], id];
+      S.example = false;
+    }
+    save(); render();
+  }
+  // render() recrea los nodos: devuelve el foco de teclado al primer selector que exista.
+  function refocus(...sels) {
+    for (const s of sels) { const el = document.querySelector(s); if (el) { el.focus({ preventScroll: true }); return; } }
+  }
+  document.addEventListener("click", (ev) => {
+    const t = ev.target.closest("button"); if (!t) return;
+    if (t.dataset.hero) { clickHero(t.dataset.hero); return refocus('[data-hero="' + CSS.escape(t.dataset.hero) + '"]'); }
+    if (t.dataset.remove) {
+      const kind = t.dataset.remove;
+      S[kind] = S[kind].filter((x) => x !== t.dataset.id); S.example = false; save(); render();
+      return refocus("#" + kind + "-slots .slot.filled", '[data-mode="' + kind + '"]'); // la casilla quitada ya no existe
+    }
+    if (t.dataset.mode) { S.mode = t.dataset.mode; return render(); }
+    if (t.dataset.filter) { S.filter = t.dataset.filter; return render(); }
+    if (t.dataset.role) { S.role = t.dataset.role; save(); return render(); }
+    if (t.id === "clear" || t.id === "dismiss-example") { S.enemy = []; S.ally = []; S.example = false; save(); render(); return refocus("#clear"); }
+  });
+  $("search").addEventListener("input", (e) => { S.q = e.target.value; renderRoster(); });
+  $("only-pool").addEventListener("change", (e) => { S.onlyPool = e.target.checked; save(); renderResults(); });
+
+  // Reserva de hueco (CLS): el aviso de ejemplo solo aparece en la primera visita.
+  try { if (localStorage.getItem("contrapick")) $("example-bar").classList.remove("loading"); } catch (e) {}
+  function init(data) {
+    D = data; D.heroes.forEach((h) => (byId[h.id] = h));
+    if (D.version) $("data-version").textContent = D.heroes.length + " héroes · datos del " + D.version.split(" · ")[0] + ".";
+    const had = load();
+    ["enemy", "ally", "pool"].forEach((k) => (S[k] = (S[k] || []).filter((id) => byId[id])));
+    if (!had) { S.enemy = EXAMPLE.slice(); S.example = true; }
+    render();
+  }
+  fetch("heroes.json").then((r) => { if (!r.ok) throw new Error("heroes.json: HTTP " + r.status); return r.json(); }).then(
+    (data) => {
+      try { init(data); } catch (e) { // el JSON llegó pero tiene una forma inesperada o el render falló
+        console.error("Contrapick: error al procesar o pintar heroes.json", e);
+        clearLoading(); $("roster").innerHTML = `<p class="err">Se cargó heroes.json pero no se pudo mostrar: el formato de los datos no es el esperado.</p>`;
+      }
+    },
+    (e) => { // red, HTTP o JSON inválido
+      console.error("Contrapick: no se pudo cargar heroes.json", e);
+      clearLoading(); $("roster").innerHTML = `<p class="err">No se pudo cargar heroes.json. Comprueba que el archivo está junto a la página y que el JSON es válido.</p>`;
+    }
+  );
+})();
+</script>

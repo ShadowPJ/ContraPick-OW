@@ -1,0 +1,65 @@
+/* Contrapick self-hosted fonts (D-003: no Google Fonts). All SIL OFL 1.1.
+   Paths are relative to the CSS file: adjust "fonts/" if styles.css lives elsewhere.
+   Subset: Latin + Latin-1 Supplement + general punctuation (covers á é í ó ú ñ ü ¿ ¡ · − – — € ™). */
+
+/* Display: Barlow Condensed (OFL) - tall, condensed, heavy, true italic */
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/barlowcondensed-600.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/barlowcondensed-700.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/barlowcondensed-700-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Body: Jost (OFL) - Futura-like geometric sans, variable wght 100-900, has tnum */
+@font-face {
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/jost-variable.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --f-display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", Impact, sans-serif;
+  --f-body: "Jost", "Century Gothic", "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+  /* No separate mono font: scores use Jost's tabular figures (see .num below).
+     --f-mono kept as an alias so existing rules keep working. */
+  --f-mono: var(--f-body);
+}
+
+/* Suggested usage */
+h1, h2, h3, .hero-name {            /* Overwatch-style hero names / titles */
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-style: italic;               /* real italic, not synthesized */
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+.display-upright { font-style: normal; font-weight: 600; }   /* labels, badges, tabs */
+body { font-family: var(--f-body); font-weight: 400; }
+.num, .score {                      /* scores, +8.0 etc. */
+  font-family: var(--f-mono);
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+  font-weight: 500;
+}
+/* Optional: <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/barlowcondensed-700-italic.woff2"> */

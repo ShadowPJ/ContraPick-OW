@@ -1,0 +1,2315 @@
+{
+  "version": "2026-11-23 · Temporada 5",
+  "sources": [
+    "https://overwatch.blizzard.com/es-es/heroes/{slug}/ (54 paginas oficiales; nombres, descripciones, rol y subrol en es-ES)",
+    "https://overwatch.blizzard.com/en-us/heroes/{slug}/ (contraste de nombres en ingles)",
+    "https://liquipedia.net/overwatch/D.Mon (teclas de D.Mon)",
+    "https://overwatch.blizzard.com/en-us/news/24160103/icymi-exploring-hazard-s-art-backstory-and-gameplay/ (Hazard)",
+    "https://thegamehaus.com/overwatch/ (guias por heroe: teclas de Domina, Anran, Emre, Shion, Mizuki, Wuyang)",
+    "https://www.dexerto.com/wikis/overwatch/heroes/support/doctrine/ (teclas de Doctrine)"
+  ],
+  "notes": "verified=true: nombres/descripciones tomados de la pagina oficial es-es de Blizzard. tr=true en una habilidad: no figura en esa pagina (traduccion propia o fuente no oficial). keysVerified=false: las teclas son estimadas (valores por defecto de PC) y pueden diferir; \"Hab.\" = teclas sin confirmar.",
+  "heroes": {
+    "dmon": {
+      "subrole": "Valeroso",
+      "summary": "Tanque valeroso en meca: castiga cuerpo a cuerpo con el sable, se cubre con la barrera y, si lo destruyen, sigue peleando como piloto.",
+      "abilities": [
+        {
+          "slot": "passive",
+          "key": "Pasiva",
+          "name": "¡Eyección!",
+          "desc": "Saltas de tu meca cuando lo destruyen."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Sable de plasma",
+          "desc": "Arma cuerpo a cuerpo de energía rápida."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq. (piloto)",
+          "name": "Cañón automático de fusión portátil",
+          "desc": "Ametralladora pesada."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Barrera de energía",
+          "desc": "Mantén pulsado clic der. para activar una barrera de energía frontal."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Propulsores",
+          "desc": "Consume combustible para abalanzarte hacia cualquier dirección en horizontal."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Cañón automático de fusión",
+          "desc": "Activa una ametralladora pesada de cadencia rápida."
+        },
+        {
+          "slot": "ability3",
+          "key": "Clic izq. (con barrera)",
+          "name": "Golpe arrollador",
+          "desc": "Mientras Barrera de energía esté desplegada, golpea hacia delante para infligir daño a tus enemigos y empujarlos hacia atrás."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Ruptura de límites",
+          "desc": "Asesta un tajo con barrido que le otorga exceso de salud y amplifica el daño que reciben los enemigos."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q (piloto)",
+          "name": "Meca",
+          "desc": "Reconstruye el meca."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/dmon/",
+      "keysSource": "https://liquipedia.net/overwatch/D.Mon"
+    },
+    "dva": {
+      "subrole": "Iniciador",
+      "summary": "Tanque ágil en meca que vuela, absorbe proyectiles con la matriz y se eyecta como piloto cuando la destruyen.",
+      "abilities": [
+        {
+          "slot": "passive",
+          "key": "Pasiva",
+          "name": "¡Eyección!",
+          "desc": "Saltas de tu meca cuando lo destruyen."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Cañones de fusión",
+          "desc": "Armas automáticas de corto alcance y disparo esparcido."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq. (piloto)",
+          "name": "Pistola de luz",
+          "desc": "Arma automática."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Matriz de defensa",
+          "desc": "Bloqueas los proyectiles en un área frente a ti."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Impulsores",
+          "desc": "Vuelas en la dirección en la que miras."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Micromisiles",
+          "desc": "Lanzas una salva de cohetes explosivos."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Autodestrucción",
+          "desc": "Sales eyectada y sobrecargas tu meca, que explota tras unos instantes."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q (piloto)",
+          "name": "Meca",
+          "desc": "Solicitas un nuevo meca."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/dva/"
+    },
+    "domina": {
+      "subrole": "Valeroso",
+      "summary": "Tanque de barreras de luz sólida: construye muros, empuja con repulsores y encierra a los enemigos con su definitiva.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Cañón de fotones",
+          "desc": "Haz de alcance medio que culmina con un disparo de alto impacto."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Repulsores sónicos",
+          "desc": "Empuja hacia atrás a los enemigos, aturdiéndolos si golpean una pared."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Matriz de barrera",
+          "desc": "Construye una barrera segmentada."
+        },
+        {
+          "slot": "ability3",
+          "key": "Ctrl",
+          "name": "Carga de cristal",
+          "desc": "Proyecta un cristal explosivo y lo reactiva para detonarlo."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Panóptico",
+          "desc": "Dispara una barrera de luz sólida que aprisiona a los jugadores y detona al acabar."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/domina/",
+      "keysSource": "https://thegamehaus.com/overwatch/all-domina-overwatch-abilities-vishkar-sends-its-regards/2026/02/04/"
+    },
+    "doomfist": {
+      "subrole": "Iniciador",
+      "summary": "Iniciador de golpes: se lanza con el puño cohete, tumba con el golpe sísmico y se protege con el bloqueo para cargar sus ataques.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Cañón de mano",
+          "desc": "Arma de disparo esparcido de corto alcance. Se recarga automáticamente."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Bloqueo de poder",
+          "desc": "Te proteges de los ataques frontales. Bloquear mucho daño potencia Puño cohete."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Puño cohete",
+          "desc": "Mantén pulsado y luego suelta para lanzarte hacia adelante y repeler a un enemigo. El daño aumenta si el enemigo choca contra un obstáculo."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Golpe sísmico",
+          "desc": "Saltas y golpeas el suelo."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Meteoro",
+          "desc": "Pulsa Q para saltar, mueve el círculo de aterrizaje y pulsa HABILIDAD 3 para atacar la zona seleccionada."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/doomfist/"
+    },
+    "hazard": {
+      "subrole": "Iniciador",
+      "summary": "Iniciador de combate cercano: se protege con las púas, salta sobre sus objetivos y levanta muros espinosos para cortar el avance enemigo.",
+      "abilities": [
+        {
+          "slot": "passive",
+          "key": "Pasiva",
+          "name": "Brinco",
+          "desc": "Escalas muros bajos y te agarras a los salientes."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Lanzaespinas",
+          "desc": "Disparas una ráfaga de púas."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Protección de púas",
+          "desc": "Te proteges del daño frontal, lanzas púas dirigidas a los enemigos cercanos y recargas munición."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Salto violento",
+          "desc": "Te lanzas hacia delante. Actívala de nuevo para dar un tajo a los enemigos y repelerlos."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Muro afilado",
+          "desc": "Lanzas un muro de púas que hace daño y repele a los enemigos cercanos."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Aguacero",
+          "desc": "Haces que llueva un torrente de púas que inmoviliza a los enemigos."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/hazard/",
+      "keysSource": "https://overwatch.blizzard.com/en-us/news/24160103/icymi-exploring-hazard-s-art-backstory-and-gameplay/"
+    },
+    "junkerqueen": {
+      "subrole": "Valeroso",
+      "summary": "Tanque fuerte de cuerpo a cuerpo que hiere para sanarse con el daño en el tiempo y refuerza a su equipo con el grito de mando.",
+      "abilities": [
+        {
+          "slot": "passive",
+          "key": "Pasiva",
+          "name": "Subidón de adrenalina",
+          "desc": "Te sanas mediante el daño en el tiempo que infligen las heridas."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Escopeta",
+          "desc": "Escopeta de corredera."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Cuchilla dentada",
+          "desc": "Lanzas una cuchilla que hiere a un enemigo; al recuperarla, tiras de él hacia ti.",
+          "tr": true
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Grito de mando",
+          "desc": "Concedes salud y velocidad de movimiento temporalmente a tus aliados y a ti."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Matanza",
+          "desc": "Hieres a los enemigos delante de ti, les infliges daño en el tiempo y reduces el tiempo de reutilización por cada enemigo golpeado."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Masacre",
+          "desc": "Cargas hacia delante para herir a los enemigos, infligirles daño en el tiempo y evitar que reciban sanaciones."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/junker-queen/"
+    },
+    "mauga": {
+      "subrole": "Fuerte",
+      "summary": "Tanque fuerte de pura presión: dos cañones de cadena, embestidas imparables y mucha sanación al infligir daño.",
+      "abilities": [
+        {
+          "slot": "passive",
+          "key": "Pasiva",
+          "name": "Berserker",
+          "desc": "Obtienes salud temporal al infligir daño crítico."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Cañón de cadena incendiario",
+          "desc": "Dispara una ráfaga continua que prende fuego a los enemigos.",
+          "tr": true
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Cañón de cadena volátil",
+          "desc": "Dispara una ráfaga continua de munición volátil que inflige críticos con más facilidad.",
+          "tr": true
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Arrollar",
+          "desc": "Embistes y das un pisotón para lanzar a los enemigos por los aires. Eres imparable mientras embistes."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Sobreestimulación cardíaca",
+          "desc": "Otorga reducción de daño y los aliados cercanos se sanan al infligir daño."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Mano a mano",
+          "desc": "Despliegas una barrera que os encierra a ti y a los enemigos."
+        }
+      ],
+      "verified": false,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/mauga/"
+    },
+    "orisa": {
+      "subrole": "Fuerte",
+      "summary": "Tanque fuerte de línea frontal: dispara a media distancia, atrae y aturde con la jabalina y se vuelve imparable con la fortificación.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Ametralladora de fusión aumentada",
+          "desc": "Arma térmica automática."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Jabalina de energía",
+          "desc": "Lanzas la jabalina a un enemigo para aturdirlo y repelerlo. La efectividad aumenta si el enemigo choca contra una pared."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Fortificación",
+          "desc": "Obtienes salud de duración limitada, reduces todo el daño recibido y te vuelves imparable."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Girojabalina",
+          "desc": "Giras la jabalina para destruir proyectiles y bloquear ataques cuerpo a cuerpo, y también para empujar a los enemigos y aumentar la velocidad de movimiento hacia delante."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Terraluvión",
+          "desc": "Atraes a los enemigos, te quedas quieta y obtienes los efectos de Fortificación mientras cargas un aluvión de daño. Usa Q para liberarlo antes de tiempo."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/orisa/"
+    },
+    "ramattra": {
+      "subrole": "Valeroso",
+      "summary": "Tanque valeroso con dos formas: ómnico para poke y barrera, némesis para pelear de cerca con puñetazos de energía.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq. (ómnico)",
+          "name": "Acelerador de vacío (Forma de ómnico)",
+          "desc": "Lanzas una andanada de proyectiles."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq. (némesis)",
+          "name": "Aporrear (Forma de némesis)",
+          "desc": "Lanzas un puñetazo, lo que genera una oleada de energía perforadora con cada golpe."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der. (ómnico)",
+          "name": "Barrera de vacío (Forma de ómnico)",
+          "desc": "Creas una barrera en la ubicación seleccionada."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Forma de némesis",
+          "desc": "Alternas entre la forma de ómnico y la forma de némesis, más blindada y de combate cercano.",
+          "tr": true
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Vórtice voraz",
+          "desc": "Lanzas una esfera de energía que detona en el suelo que ralentiza y derriba a los enemigos. Actívala de nuevo para detonarla antes."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Aniquilación",
+          "desc": "Adoptas la Forma de némesis y creas un enjambre letal que se abalanza sobre los enemigos cercanos y que dura más cuando inflige daño a los enemigos."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/ramattra/"
+    },
+    "reinhardt": {
+      "subrole": "Valeroso",
+      "summary": "Tanque valeroso clásico: tapa a su equipo con el campo protector y arrasa con el martillo, la embestida y el seísmo.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Martillo a reacción",
+          "desc": "Arma cuerpo a cuerpo devastadora."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Campo protector",
+          "desc": "Mantén pulsado clic der. para activar una barrera de energía frontal."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Embestida",
+          "desc": "Cargas hacia delante y empotras a un enemigo contra la pared."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Onda de fuego",
+          "desc": "Lanzas un proyectil de fuego."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Seísmo",
+          "desc": "Derribas a todos los enemigos frente a ti."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/reinhardt/"
+    },
+    "roadhog": {
+      "subrole": "Fuerte",
+      "summary": "Tanque fuerte de mucha vida: arrastra objetivos con el garfio, remata con la escopeta y se cura con el inhalador.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Chatarrera",
+          "desc": "Escopeta de corto alcance que dispara en dos ráfagas."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Compactadora de basura",
+          "desc": "Absorbe los proyectiles enemigos y los compacta para convertirlos en una bola explosiva de chatarra."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Garfio",
+          "desc": "Arrastras a un enemigo hacia ti."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Inhalador",
+          "desc": "Te curas y reduces el daño que recibes."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Juego sucio",
+          "desc": "Dañas y repeles a todos los enemigos frente a ti."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/roadhog/"
+    },
+    "sigma": {
+      "subrole": "Valeroso",
+      "summary": "Tanque valeroso de control: alterna entre barrera flotante y absorción de proyectiles mientras castiga con hiperesferas y gravedad.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Hiperesferas",
+          "desc": "Lanzas dos cargas que implosionan tras un corto periodo de tiempo, lo que inflige daño en un área."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Acreción",
+          "desc": "Reúnes una masa de escombros, la lanzas contra un enemigo y lo derribas."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Agarre cinético",
+          "desc": "Absorbes proyectiles frente a ti y los conviertes en salud adicional."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Barrera experimental",
+          "desc": "Mantenlo pulsado para proyectar una barrera flotante; suéltalo para parar. Pulsa de nuevo para hacer que la barrera vuelva a ti."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Flujo gravitacional",
+          "desc": "Manipula la gravedad para alzar a los enemigos en el aire y luego estrellarlos contra el suelo."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/sigma/"
+    },
+    "winston": {
+      "subrole": "Iniciador",
+      "summary": "Iniciador que salta sobre la retaguardia enemiga, la sacude con el cañón tesla y se protege con la cúpula de energía.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Cañón tesla",
+          "desc": "Arma que dispara electricidad en un cono frontal."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Cañón tesla (fuego secundario)",
+          "desc": "Mantenlo pulsado para cargar y suéltalo para disparar electricidad concentrada."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Salto potenciado",
+          "desc": "Saltas por el aire. Si aterrizas sobre un enemigo, le infliges daño."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Campo de fuerza",
+          "desc": "Despliegas una cúpula de energía protectora."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Rabia primigenia",
+          "desc": "Obtienes gran cantidad de salud, pero solo puedes saltar y dar puñetazos."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/winston/"
+    },
+    "wreckingball": {
+      "subrole": "Iniciador",
+      "summary": "Iniciador veloz que se desplaza como bola, se engancha para rodar y revienta formaciones con el impacto demoledor.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Cañones cuádruples",
+          "desc": "Armas de asalto automáticas."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Gancho garra",
+          "desc": "Lanzas un gancho que te permite desplazarte rápidamente por la zona. También hace que dañes a un enemigo y lo repelas cuando chocas contra él a gran velocidad."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Bola arrolladora",
+          "desc": "Te transformas en una bola, lo que aumenta tu velocidad de movimiento máxima."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Escudo adaptable",
+          "desc": "Creas salud adicional de duración limitada que aumenta cuantos más enemigos tengas cerca. Puedes transferir parte de esa salud a tus aliados."
+        },
+        {
+          "slot": "ability3",
+          "key": "Ctrl",
+          "name": "Impacto demoledor",
+          "desc": "Te lanzas al suelo en picado, infliges daño a los enemigos y los haces saltar por los aires."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Campo de minas",
+          "desc": "Despliegas un gran campo de minas de proximidad."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/wrecking-ball/"
+    },
+    "zarya": {
+      "subrole": "Fuerte",
+      "summary": "Tanque fuerte de energía: protege con barreras, convierte el daño bloqueado en potencia y junta enemigos con la bomba de gravedad.",
+      "abilities": [
+        {
+          "slot": "passive",
+          "key": "Pasiva",
+          "name": "Energía",
+          "desc": "El daño que bloquean las barreras aumenta el daño del cañón de partículas."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Cañón de partículas",
+          "desc": "Arma que dispara un haz lineal de corto alcance."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Cañón de partículas (fuego secundario)",
+          "desc": "Lanzas granadas de energía."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Barrera de partículas",
+          "desc": "Creas una barrera de daño a tu alrededor."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Barrera proyectada",
+          "desc": "Creas una barrera de daño alrededor de un aliado."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Bomba de gravedad",
+          "desc": "Lanzas un pozo de gravedad que atrae a los enemigos."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/zarya/"
+    },
+    "anran": {
+      "subrole": "Flanqueador",
+      "summary": "Flanqueador de fuego: quema a distancia con los abanicos, esquiva el daño con su danza de llamas y carga hacia el combate.",
+      "abilities": [
+        {
+          "slot": "passive",
+          "key": "Pasiva",
+          "name": "Ignición",
+          "desc": "Golpea a los enemigos con ataques de fuego para quemarlos."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Abanicos Zhuque",
+          "desc": "Abanicos que disparan proyectiles ardientes."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Atizar el fuego",
+          "desc": "Una explosión de aire caliente que aumenta el daño por quemadura."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Carga infernal",
+          "desc": "Te impulsa hacia delante y daña a los enemigos con los que impactas."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Llama danzante",
+          "desc": "Golpea a los enemigos cercanos mientras esquivas todo el daño y te sanas por cada enemigo golpeado."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Ascenso bermellón",
+          "desc": "Carga hacia delante, explota al impactar y prende fuego a los enemigos inmediatamente."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q (variante)",
+          "name": "Renacimiento bermellón",
+          "desc": "Cuando mueres, te revive con una explosión abrasadora."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/anran/",
+      "keysSource": "https://thegamehaus.com/overwatch/all-anran-overwatch-abilities-wuyangs-sister-joins-the-fray/2026/02/04/"
+    },
+    "ashe": {
+      "subrole": "Tirador",
+      "summary": "Tiradora de largo alcance con rifle semiautomático, dinamita para controlar zonas y a BOB como apoyo de definitiva.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Víbora",
+          "desc": "Rifle semiautomático."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Víbora (fuego secundario)",
+          "desc": "Mantén pulsado para hacer zoom, lo que aumenta el daño y la precisión, pero reduce la velocidad de disparo."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Recortada",
+          "desc": "Acribillas a los enemigos frente a ti y te impulsas hacia atrás."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Dinamita",
+          "desc": "Lanzas un explosivo que detona tras un breve periodo o al instante si le disparas."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "BOB",
+          "desc": "Despliegas a Bob, que carga hacia delante y lanza a los enemigos por los aires. Luego ataca con los cañones de su brazo."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/ashe/"
+    },
+    "bastion": {
+      "subrole": "Especialista",
+      "summary": "Especialista que cambia entre modo asalto, reconocimiento y artillería para dominar zonas fijas con mucho daño.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq. (asalto)",
+          "name": "Modo asalto",
+          "desc": "Un tanque de desplazamiento lento con un poderoso cañón rotativo."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq. (reconocimiento)",
+          "name": "Modo reconocimiento",
+          "desc": "Móvil y con un arma ligera de gran precisión."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Reconfiguración",
+          "desc": "Alternas entre un modo y el otro."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Granada táctica A-36",
+          "desc": "Lanzas una bomba que rebota en las paredes y explota cuando impacta contra los enemigos o el suelo."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Modo artillería",
+          "desc": "Te vuelves inmóvil y disparas hasta 3 proyectiles muy potentes."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/bastion/"
+    },
+    "cassidy": {
+      "subrole": "Tirador",
+      "summary": "Tirador versátil: revólver preciso a media distancia, evasión para esquivar y una granada que anula la movilidad enemiga.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Pacificador",
+          "desc": "Un revólver preciso y potente."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Pacificador (fuego secundario)",
+          "desc": "Disparas todas las balas restantes frenéticamente."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Evasión",
+          "desc": "Ruedas en la dirección en la que te estás moviendo para recibir menos daño y recargar el arma."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Granada cegadora",
+          "desc": "Entorpeces a los enemigos frente a ti, los ralentizas e inhabilitas las habilidades de movimiento."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Sin perdón",
+          "desc": "Retas a tus enemigos a un duelo. Pulsa Q para apuntar y luego Q o HABILIDAD 3 para disparar."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/cassidy/"
+    },
+    "echo": {
+      "subrole": "Reconocimiento",
+      "summary": "Reconocimiento aéreo: vuela, lanza ráfagas de bombas y haz enfocado, y copia al héroe enemigo que elija con su definitiva.",
+      "abilities": [
+        {
+          "slot": "passive",
+          "key": "Pasiva",
+          "name": "Planeo",
+          "desc": "Mantén pulsado el botón de salto mientras caes para planear."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Disparo triple",
+          "desc": "Lanza 3 disparos a la vez en un patrón triangular."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Bombas lapa",
+          "desc": "Lanza una salva de bombas lapa que explotan tras unos instantes."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Vuelo",
+          "desc": "Vuela rápidamente hacia delante y luego planea con libertad durante unos instantes."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Haz enfocado",
+          "desc": "Canaliza un haz durante unos segundos. Inflige una gran cantidad de daño a los objetivos con menos de la mitad de salud."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Duplicado",
+          "desc": "Te conviertes en una copia del héroe seleccionado, que no puede cambiar de héroe mientras dure el efecto."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/echo/"
+    },
+    "emre": {
+      "subrole": "Especialista",
+      "summary": "Especialista con rifle de ráfagas sintético y regeneración acelerada; se convierte en un arma viva con su definitiva.",
+      "abilities": [
+        {
+          "slot": "passive",
+          "key": "Pasiva",
+          "name": "Vitales alterados",
+          "desc": "La regeneración pasiva de salud se activa antes y restaura inmediatamente 30 puntos de salud cuando se activa."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Rifle de ráfaga sintética",
+          "desc": "Un arma que dispara ráfagas de tres."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Rifle de ráfaga sintética (fuego secundario)",
+          "desc": "Mantenlo pulsado para hacer zoom, lo que aumenta la precisión y el alcance de la caída."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Granada cibernética",
+          "desc": "Lanza una granada que detona tras rebotar brevemente."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Protocolo de anulación",
+          "desc": "Se inicia una anulación, transformándote en un arma viva."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/emre/",
+      "keysSource": "https://thegamehaus.com/overwatch/all-emre-overwatch-abilities-get-to-know-an-old-friend/2026/02/04/"
+    },
+    "freja": {
+      "subrole": "Reconocimiento",
+      "summary": "Reconocimiento de largo alcance con ballesta rápida y virote explosivo apuntado; se reposiciona con el impulso y la corriente ascendente.",
+      "abilities": [
+        {
+          "slot": "passive",
+          "key": "Pasiva",
+          "name": "Cazadora de recompensas",
+          "desc": "Cada 5 eliminaciones otorgan carga extra de definitiva; las del Disparo de boleadora también cuentan.",
+          "tr": true
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Ballesta rapaz",
+          "desc": "Ballesta automática de cadencia rápida.",
+          "tr": true
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Apuntado",
+          "desc": "Apunta despacio y con cuidado para disparar un virote explosivo a alta velocidad. Usar Desplazamiento veloz recarga Apuntado."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Desplazamiento veloz",
+          "desc": "Te lanza en la dirección hacia la que te estés moviendo y recarga Apuntado."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Corriente ascendente",
+          "desc": "Te lanzas hacia arriba con una ráfaga de viento."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Disparo de boleadora",
+          "desc": "Dispara una boleadora explosiva. Golpear a un enemigo con ella lo atrapa y atrae hacia él a otros enemigos cercanos."
+        }
+      ],
+      "verified": false,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/freja/"
+    },
+    "genji": {
+      "subrole": "Flanqueador",
+      "summary": "Flanqueador acrobático: desvía proyectiles con la espada, escala paredes y se reinicia con cada eliminación del corte veloz.",
+      "abilities": [
+        {
+          "slot": "passive",
+          "key": "Pasiva",
+          "name": "Ciberagilidad",
+          "desc": "Escalas paredes y tienes doble salto."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Shuriken",
+          "desc": "Lanzas una ráfaga precisa de 3 proyectiles."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Shuriken (fuego secundario)",
+          "desc": "Lanzas 3 proyectiles en un arco."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Desvío",
+          "desc": "Desvías los proyectiles recibidos hacia la dirección en la que miras y bloqueas ataques cuerpo a cuerpo."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Corte veloz",
+          "desc": "Cargas rápidamente hacia delante y dañas a los enemigos. Las eliminaciones reinician el tiempo de reutilización."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Hoja del dragón",
+          "desc": "Desenfundas un arma cuerpo a cuerpo mortífera."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/genji/"
+    },
+    "hanzo": {
+      "subrole": "Tirador",
+      "summary": "Tirador de arco: flechas cargadas a larga distancia, flechas sónicas para revelar y un dragón que atraviesa a los enemigos.",
+      "abilities": [
+        {
+          "slot": "passive",
+          "key": "Pasiva",
+          "name": "Agilidad de dragón",
+          "desc": "Tienes doble salto."
+        },
+        {
+          "slot": "passive",
+          "key": "Pasiva",
+          "name": "Escalada",
+          "desc": "Saltas hacia una pared para trepar por ella."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Arco de tormenta",
+          "desc": "Mantenlo pulsado para cargar las flechas, y luego suéltalo para dispararlas más lejos."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Flecha sónica",
+          "desc": "Tras impactar, revela a los enemigos durante un breve período de tiempo."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Tormenta de flechas",
+          "desc": "Las siguientes 5 flechas rebotan, se lanzan de forma instantánea e infligen daño reducido."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Ataque del dragón",
+          "desc": "Lanzas un espíritu dragón letal que arrasa con los enemigos a los que atraviesa."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/hanzo/"
+    },
+    "junkrat": {
+      "subrole": "Especialista",
+      "summary": "Especialista de explosivos: minas, cepos y granadas rebotantes para controlar zonas y castigar el movimiento.",
+      "abilities": [
+        {
+          "slot": "passive",
+          "key": "Pasiva",
+          "name": "Caos total",
+          "desc": "No sufres daño de tus propios explosivos. Sueltas bombas al morir."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Lanzagranadas",
+          "desc": "Arma de proyectiles explosivos que rebotan."
+        },
+        {
+          "slot": "ability1",
+          "key": "Hab.",
+          "name": "Mina de conmoción",
+          "desc": "Lanzas una mina que repele con MAYÚS IZQ y la detonas con HABILIDAD 1."
+        },
+        {
+          "slot": "ability2",
+          "key": "Hab.",
+          "name": "Cepo",
+          "desc": "Colocas una trampa inmovilizadora."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Rueda explosiva",
+          "desc": "Diriges y detonas una rueda explosiva."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/junkrat/"
+    },
+    "mei": {
+      "subrole": "Especialista",
+      "summary": "Especialista de control con hielo: ralentiza, levanta muros y se vuelve invulnerable con la criónica.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Pistola endotérmica",
+          "desc": "Arma de rociado de corto alcance que ralentiza a los enemigos."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Pistola endotérmica (fuego secundario)",
+          "desc": "Lanzacarámbanos de largo alcance."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Criónica",
+          "desc": "Te vuelves invulnerable y te sanas."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Muro de hielo",
+          "desc": "Creas un muro de hielo frente a ti."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Ventisca",
+          "desc": "Lanzas un dron de control climático que congela a los enemigos en una gran área."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/mei/"
+    },
+    "pharah": {
+      "subrole": "Reconocimiento",
+      "summary": "Reconocimiento aéreo con lanzacohetes: castiga desde el cielo con daño de área y repele con el disparo de conmoción.",
+      "abilities": [
+        {
+          "slot": "passive",
+          "key": "Espacio (mantener)",
+          "name": "Planeador",
+          "desc": "Mantenlo pulsado para planear. Caes despacio cuando el combustible se termina. El combustible solo se regenera mientras se está en el suelo."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Lanzacohetes",
+          "desc": "Arma de proyectiles explosivos de largo alcance."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Impulso",
+          "desc": "Te impulsas horizontalmente."
+        },
+        {
+          "slot": "ability2",
+          "key": "Espacio",
+          "name": "Propulsores",
+          "desc": "Asciendes rápidamente y recuperas un poco de combustible."
+        },
+        {
+          "slot": "ability3",
+          "key": "E",
+          "name": "Disparo de conmoción",
+          "desc": "Lanzas un cohete explosivo que repele a los enemigos."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Bombardeo",
+          "desc": "Lanzas una salva continua de minicohetes."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/pharah/"
+    },
+    "reaper": {
+      "subrole": "Flanqueador",
+      "summary": "Flanqueador de corto alcance que se sana con el daño, se teletransporta y arrasa con las escopetas.",
+      "abilities": [
+        {
+          "slot": "passive",
+          "key": "Pasiva",
+          "name": "Siega",
+          "desc": "Infligir daño te sana."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Escopetas infernales",
+          "desc": "Armas de corto alcance y disparo esparcido."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Forma espectral",
+          "desc": "Aceleras tu movimiento y te vuelves invulnerable, pero no puedes disparar."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Paso de las tinieblas",
+          "desc": "Te teletransportas a la ubicación seleccionada."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Espiral de muerte",
+          "desc": "Dañas a todos los enemigos cercanos."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/reaper/"
+    },
+    "shion": {
+      "subrole": "Flanqueador",
+      "summary": "Flanqueadora motera: dispara a toda velocidad, esquiva con exceso de salud y lanza su moto contra los enemigos.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Pistolas Kira",
+          "desc": "Pistolas de ánima de fuego rápido."
+        },
+        {
+          "slot": "ability1",
+          "key": "Hab. 1",
+          "name": "Ejecución",
+          "desc": "Dispara una salva con forma de X. Mantén presionado para contener la dispersión."
+        },
+        {
+          "slot": "ability2",
+          "key": "Hab. 2",
+          "name": "Evasión",
+          "desc": "Corre y obtiene exceso de salud brevemente."
+        },
+        {
+          "slot": "ability3",
+          "key": "Hab. 3",
+          "name": "Vuelta salvaje",
+          "desc": "Acelera el motor. Vuelve a activar para bajarte y lanzar la moto hacia delante."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Satsuriku",
+          "desc": "Avanza a toda velocidad 3 veces en medio de una lluvia de disparos."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/shion/",
+      "keysSource": "https://thegamehaus.com/overwatch/all-overwatch-shion-abilities-release-date-more/2026/06/11/"
+    },
+    "sierra": {
+      "subrole": "Reconocimiento",
+      "summary": "Reconocimiento que marca objetivos para que sus disparos los persigan, con dron de anclaje y explosivos de área.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Rifle hélice",
+          "desc": "Arma de asalto automática. Dispara en forma de hélice, obteniendo precisión con fuego sostenido."
+        },
+        {
+          "slot": "ability1",
+          "key": "Hab.",
+          "name": "Disparo rastreador",
+          "desc": "Marca a un enemigo. Los disparos de Rifle hélice rastrean automáticamente a los enemigos marcados."
+        },
+        {
+          "slot": "ability2",
+          "key": "Hab.",
+          "name": "Carga sísmica",
+          "desc": "Lanzas una carga que crea una onda de choque al impactar."
+        },
+        {
+          "slot": "ability3",
+          "key": "Hab.",
+          "name": "Dron de anclaje",
+          "desc": "Lanzas un dron de anclaje. Reactívalo para lanzarte hacia él."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Abrecaminos",
+          "desc": "Despliegas un dron que vuela hacia delante y lanza explosivos."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/sierra/"
+    },
+    "sojourn": {
+      "subrole": "Tirador",
+      "summary": "Tiradora de movilidad con cañón de riel: acumula energía y la gasta en un disparo perforante.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Cañón de riel",
+          "desc": "Proyectiles de gran velocidad que generan energía al impactar."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Cañón de riel (fuego secundario)",
+          "desc": "Disparo de potencia elevada que gasta la energía acumulada y atraviesa a los enemigos."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Maniobra evasiva",
+          "desc": "Desplazamiento por el suelo que puede convertirse en un salto elevado."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Disparo inmovilizador",
+          "desc": "Lanzas una ráfaga de energía que inflige daño a los enemigos que se encuentran en su interior."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Supercarga",
+          "desc": "La energía del cañón de riel se carga automáticamente durante un breve periodo."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/sojourn/"
+    },
+    "soldier": {
+      "subrole": "Especialista",
+      "summary": "Especialista polivalente: rifle fiable, cohetes, campo biótico y puntería automática en su definitiva.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Rifle de pulsos pesado",
+          "desc": "Arma de asalto automática."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Cohetes hélice",
+          "desc": "Lanzas una salva de cohetes explosivos."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Sprint",
+          "desc": "Corres más rápido hacia delante."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Campo biótico",
+          "desc": "Despliegas un campo que os sana a tus aliados y a ti."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Visor táctico",
+          "desc": "Apuntas tu arma automáticamente a los objetivos visibles."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/soldier-76/"
+    },
+    "symmetra": {
+      "subrole": "Especialista",
+      "summary": "Especialista de zona: haz de fotones que crece, torretas centinela, teletransportador y una barrera enorme.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Proyector de fotones",
+          "desc": "Arma de corto alcance cuyo haz inflige cada vez más daño."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Proyector de fotones (fuego secundario)",
+          "desc": "Mantenlo pulsado para cargar y suéltalo para disparar un orbe explosivo."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Teletransportador",
+          "desc": "Creas dos teletransportadores temporales que permiten viajar de uno a otro al instante."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Torreta centinela",
+          "desc": "Despliegas una pequeña torreta que daña y ralentiza a los enemigos."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Barrera de fotones",
+          "desc": "Despliegas una barrera de energía enorme."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/symmetra/"
+    },
+    "torbjorn": {
+      "subrole": "Especialista",
+      "summary": "Especialista que construye una torreta y mejora su armadura; con sobrecarga y fusión nuclear se vuelve letal.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Remachadora",
+          "desc": "Arma de largo alcance y baja cadencia de fuego."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Remachadora (fuego secundario)",
+          "desc": "Arma de corto alcance, poderosa pero poco precisa."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Sobrecarga",
+          "desc": "Obtienes salud adicional y mejoran tus velocidades de ataque, movimiento y recarga."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Desplegar torreta",
+          "desc": "Despliegas una torreta que se autoconstruye."
+        },
+        {
+          "slot": "ability3",
+          "key": "Cuerpo a cuerpo",
+          "name": "Martillo de forja",
+          "desc": "Golpeas con el martillo para reparar tu torreta o dañar a un enemigo."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Fusión nuclear",
+          "desc": "Creas charcos de escoria fundida que daña a los enemigos. Infliges daño adicional a la armadura."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/torbjorn/"
+    },
+    "tracer": {
+      "subrole": "Flanqueador",
+      "summary": "Flanqueadora veloz: se teletransporta, retrocede en el tiempo para recuperar salud y pega bombas adhesivas.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Pistolas de pulsos",
+          "desc": "Armas automáticas de corto alcance."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Traslación",
+          "desc": "Te teletransportas en la dirección en la que te estás moviendo."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Regresión",
+          "desc": "Restableces tu ubicación y salud anteriores al viajar atrás en el tiempo."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Bomba de pulsos",
+          "desc": "Lanzas un potente explosivo adhesivo."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/tracer/"
+    },
+    "vendetta": {
+      "subrole": "Flanqueador",
+      "summary": "Flanqueadora cuerpo a cuerpo con espadón de luz: bloquea con postura de protección, se lanza con tajos y atraviesa defensas con su definitiva.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Colmillo palatino",
+          "desc": "Espadón de luz sólida. Encadena tajos para terminar con un golpe destructivo por encima de la cabeza."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Postura de protección",
+          "desc": "Bloquea con tu espada, reduce el daño frontal y repele los ataques cuerpo a cuerpo. Bloquear daño consume energía."
+        },
+        {
+          "slot": "ability1",
+          "key": "Hab.",
+          "name": "Espiral de tajos",
+          "desc": "Te lanzas hacia delante y realizas un tajo circular."
+        },
+        {
+          "slot": "ability2",
+          "key": "Hab.",
+          "name": "Corte volador",
+          "desc": "Lanza tu espada en la dirección a la que te diriges y luego vuela hacia ella."
+        },
+        {
+          "slot": "ability3",
+          "key": "Clic izq. (en postura)",
+          "name": "Corte proyectado",
+          "desc": "Disponible cuando está activa la postura de protección. Consume energía para lanzar un proyectil ancho."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Partemundos",
+          "desc": "Atraviesa prácticamente todas las defensas e inflige mucho daño a los enemigos frente a ti."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/vendetta/"
+    },
+    "venture": {
+      "subrole": "Flanqueador",
+      "summary": "Flanqueadora que se entierra para ser invulnerable y emerge con daño; perfora el terreno con cargas sísmicas.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Excavación inteligente",
+          "desc": "Lanzas una carga sísmica que explota a poca distancia."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Enterrarse",
+          "desc": "Te entierras y te vuelves invulnerable. Pulsa o mantén MAYÚS IZQ para emerger e infligir daño a los enemigos."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Perforación",
+          "desc": "Te lanzas hacia delante tanto si estás bajo tierra como en la superficie, lo que hace retroceder a los enemigos. El tiempo de reutilización se recarga más rápido mientras Enterrarse esté activa."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Impacto tectónico",
+          "desc": "Lanza ondas de choque dañinas."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/venture/"
+    },
+    "widowmaker": {
+      "subrole": "Tirador",
+      "summary": "Francotiradora clásica: rifle de largo alcance, gancho para ganar altura y minas venenosas para vigilar flancos.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Beso de la viuda",
+          "desc": "Arma de asalto automática."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Beso de la viuda (fuego secundario)",
+          "desc": "Mantenlo pulsado para usar un rifle de francotirador de largo alcance."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Gancho",
+          "desc": "Lanzas un gancho que te sube a una cornisa."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Mina venenosa",
+          "desc": "Lanzas una trampa venenosa."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Infravisión",
+          "desc": "Permites a tu equipo ver la ubicación de los enemigos."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/widowmaker/"
+    },
+    "ana": {
+      "subrole": "Estratega",
+      "summary": "Estratega de largo alcance: cura y daña con un rifle, duerme objetivos y potencia a sus aliados con nanoestimulantes.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Rifle biótico",
+          "desc": "Rifle de gran alcance que sana a los aliados y daña a los enemigos."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Rifle biótico (fuego secundario)",
+          "desc": "Mantenlo pulsado para hacer zoom."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Dardo sedante",
+          "desc": "Disparas un dardo que duerme a un enemigo."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Granada biótica",
+          "desc": "Lanzas una bomba que sana y aumenta la sanación a los aliados; al mismo tiempo, inflige daño y evita que se pueda sanar a los enemigos."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Nanoestimulantes",
+          "desc": "Aumentas el daño de un aliado, al tiempo que reduces el daño que este recibe."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/ana/"
+    },
+    "baptiste": {
+      "subrole": "Estratega",
+      "summary": "Estratega resistente: sanación en área, campo de inmortalidad y matriz que duplica daño y sanación.",
+      "abilities": [
+        {
+          "slot": "passive",
+          "key": "Agacharse + salto",
+          "name": "Exobotas",
+          "desc": "Te agachas para poder dar un salto de gran altura."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Lanzagranadas biótico",
+          "desc": "Un arma que dispara ráfagas de tres proyectiles."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Lanzagranadas biótico (fuego secundario)",
+          "desc": "Lanzas un proyectil sanador que sana a todos los aliados cerca del punto de impacto."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Energía regeneradora",
+          "desc": "Actívala para sanarte a ti y a los aliados cercanos al instante y obtener sanación adicional en el tiempo. La sanación instantánea se duplica en los objetivos que tienen menos de la mitad de la salud."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Campo de inmortalidad",
+          "desc": "Lanzas un dispositivo que impide que los aliados mueran. El dispositivo se puede destruir."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Matriz amplificadora",
+          "desc": "Proyectas una matriz que duplica el daño y la sanación de los proyectiles aliados."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/baptiste/"
+    },
+    "brigitte": {
+      "subrole": "Superviviente",
+      "summary": "Superviviente de primera línea: protege con escudo y mangual, cura con el kit de reparación y refuerza al equipo con la formación.",
+      "abilities": [
+        {
+          "slot": "passive",
+          "key": "Pasiva",
+          "name": "Inspiración",
+          "desc": "Infligir daño a los enemigos sana a los aliados cercanos."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Mangual mecánico",
+          "desc": "Arma cuerpo a cuerpo con alcance aumentado."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Escudo barrera",
+          "desc": "Mantén pulsado clic der. para activar una barrera de energía frontal."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Lanzamiento de mangual",
+          "desc": "Lanzas el mangual hacia delante para repeler y alejar de ti a un enemigo."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Kit de reparación",
+          "desc": "Sana a un aliado durante un breve período."
+        },
+        {
+          "slot": "ability3",
+          "key": "Shift (con escudo)",
+          "name": "Carga con escudo",
+          "desc": "Disponible al tener el Escudo barrera desplegado. Cargas hacia delante y repeles y aturdes a un enemigo."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Formación",
+          "desc": "Obtienes armadura, potencias Escudo barrera y proporcionas salud adicional a los aliados cercanos."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/brigitte/"
+    },
+    "doctrine": {
+      "subrole": "Superviviente",
+      "summary": "Superviviente de media distancia que potencia su siguiente habilidad con Imbuir, con drones de apoyo y una definitiva que reduce la salud máxima enemiga.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Cetro eterno",
+          "desc": "Arma de alcance medio que sana a los aliados e inflige daño a los enemigos. Imbuido: lanza un disparo perforador mayor."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Imbuir",
+          "desc": "Añade un poderoso efecto a tu siguiente habilidad."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Impulso velado",
+          "desc": "Te desplazas horizontalmente y sufres menos daño. Imbuido: puedes volar libremente."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Drones vigorizantes",
+          "desc": "Despliegas drones hacia un aliado, que le otorgan velocidad de ataque y sanación. Imbuido: los drones también te afectan a ti."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Liberación",
+          "desc": "Lanzas un enjambre de drones que reduce la salud máxima del enemigo y otorga exceso de salud a los aliados."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/doctrine/",
+      "keysSource": "https://www.dexerto.com/wikis/overwatch/heroes/support/doctrine/"
+    },
+    "illari": {
+      "subrole": "Superviviente",
+      "summary": "Superviviente de largo alcance con energía solar: cura con rayo o rifle, planta una helioterapia y arrasa con el sol cautivo.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Rifle solar",
+          "desc": "Rifle de largo alcance con carga automática."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Rifle solar (fuego secundario)",
+          "desc": "Rayo curativo de medio alcance que consume energía solar."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Erupción",
+          "desc": "Te lanza en la dirección hacia la que te estás moviendo y repele a los enemigos. Mantén pulsado para ascender más alto."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Helioterapia",
+          "desc": "Despliega una torreta que sana a los aliados."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Sol cautivo",
+          "desc": "Dispara una bola explosiva de energía solar. Los enemigos alcanzados quedan ralentizados y explotan después de recibir mucho daño."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/illari/"
+    },
+    "jetpackcat": {
+      "subrole": "Estratega",
+      "summary": "Estratega aérea que vuela sin parar, remolca aliados con la línea de vida y cura en área con el ronroneo.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Patiproyectiles bióticos",
+          "desc": "Expansión de proyectiles a distancia media que sanan aliados o dañan enemigos."
+        },
+        {
+          "slot": "ability1",
+          "key": "Hab.",
+          "name": "Vuelo frenético",
+          "desc": "Acelera en dirección a tu movimiento. La recuperación de combustible se ralentiza al llevar a otro jugador."
+        },
+        {
+          "slot": "ability2",
+          "key": "Hab.",
+          "name": "Línea de vida",
+          "desc": "Activa el modo transporte, lo que permite remolcar a un aliado. Aumenta la velocidad de movimiento y sana a tu aliado."
+        },
+        {
+          "slot": "ability3",
+          "key": "Hab.",
+          "name": "Ronroneo",
+          "desc": "Sanación de zona pulsante que aumenta en frecuencia con el tiempo. Repele a los enemigos cercanos cuando se activa."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Gata secuestradora",
+          "desc": "Lánzate hacia un punto del suelo, derribando a enemigos y atando al más cercano a ti."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/jetpack-cat/"
+    },
+    "juno": {
+      "subrole": "Superviviente",
+      "summary": "Superviviente aérea que sana con mediarma y torpedos guiados, acelera al equipo con el hiperanillo y potencia el daño con su rayo orbital.",
+      "abilities": [
+        {
+          "slot": "passive",
+          "key": "Pasiva",
+          "name": "Cubrebotas marciano",
+          "desc": "En el aire, pulsa ESPACIO para realizar un doble salto y mantén ESPACIO para planear."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Mediarma",
+          "desc": "Arma de disparo de ráfaga que sana a los aliados e inflige daño a los enemigos."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Torpedos de púlsar",
+          "desc": "Fijas objetivos con clic der. y vuelves a pulsarlo para disparar proyectiles guiados. Sana a los aliados con el tiempo e inflige daño a los enemigos."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Impulso de planeo",
+          "desc": "Planea en horizontal con mayor velocidad de movimiento."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Hiperanillo",
+          "desc": "Despliega un anillo que aumenta la velocidad de movimiento de los aliados que pasan a través de él."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Rayo orbital",
+          "desc": "Lanza desde el cielo un rayo que viaja hacia delante, sana a los aliados y aumenta el daño que infligen."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/juno/"
+    },
+    "kiriko": {
+      "subrole": "Médico",
+      "summary": "Médico ágil: sana con talismanes, se teletransporta a sus aliados y los limpia con el suzu de protección.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Ofuda de sanación",
+          "desc": "Canalizas una ráfaga de talismanes de sanación que van hacia los aliados seleccionados."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Kunái",
+          "desc": "Proyectil arrojadizo de largo alcance."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Paso ligero",
+          "desc": "Te teletransportas junto a un aliado."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Suzu de protección",
+          "desc": "Lanzas un amuleto protector que vuelve invulnerables a los aliados durante unos instantes y elimina la mayoría de los efectos negativos."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Marcha del kitsune",
+          "desc": "Invocas el espíritu de un zorro que avanza hacia delante y potencia el movimiento, la velocidad de ataque y los tiempos de reutilización de los aliados que sigan su camino."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/kiriko/"
+    },
+    "lifeweaver": {
+      "subrole": "Médico",
+      "summary": "Médico de control: sana a distancia, levanta aliados con la plataforma, los salva con el agarre vital y planta el árbol de vida.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Brote sanador",
+          "desc": "Mantén pulsado para cargar una sanación y suéltalo para sanar al aliado seleccionado. Se carga pasivamente a una velocidad reducida cuando no se utiliza."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Salva espinosa",
+          "desc": "Disparas rápidamente proyectiles a pares."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Paso regenerador",
+          "desc": "Cargas hacia la dirección de desplazamiento y te curas un poco."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Plataforma petaloide",
+          "desc": "Lanzas una plataforma que se eleva cuando alguien se sube. Se reinicia cuando no se utiliza."
+        },
+        {
+          "slot": "ability3",
+          "key": "Ctrl",
+          "name": "Agarre vital",
+          "desc": "Atraes a un aliado a tu ubicación y lo proteges durante el recorrido."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Árbol de vida",
+          "desc": "Plantas un árbol que brota y sana a los aliados al instante. Otorga sanación continua mientras vive."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/lifeweaver/"
+    },
+    "lucio": {
+      "subrole": "Estratega",
+      "summary": "Estratega veloz que surfea paredes, cura o acelera a su equipo con la música y lanza ondas para repeler.",
+      "abilities": [
+        {
+          "slot": "passive",
+          "key": "Pasiva",
+          "name": "Trotamuros",
+          "desc": "Saltas a una pared para impulsarte por ella."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Amplificador sónico",
+          "desc": "Lanzador de proyectiles sónicos."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Subidón",
+          "desc": "Aumentas la eficacia de tu canción actual."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Onda sonora",
+          "desc": "Provocas una explosión de corto alcance que repele a los enemigos."
+        },
+        {
+          "slot": "ability3",
+          "key": "Ctrl",
+          "name": "Cambio de pista",
+          "desc": "Alternas entre dos canciones. Mejora de sanación sana a los aliados cercanos. Mejora de velocidad hace que los aliados cercanos se muevan más rápido."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Barrera de sonido",
+          "desc": "Creas salud adicional temporal para los aliados cercanos."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/lucio/"
+    },
+    "mercy": {
+      "subrole": "Médico",
+      "summary": "Médico que vuela hacia sus aliados, alterna entre sanar y potenciar el daño y resucita a los caídos.",
+      "abilities": [
+        {
+          "slot": "passive",
+          "key": "Pasiva",
+          "name": "Descenso angélico",
+          "desc": "Ralentizas tu caída."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Bastón caduceo",
+          "desc": "Mantenlo pulsado para sanar a un aliado."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Bastón caduceo (fuego secundario)",
+          "desc": "Mantenlo pulsado para aumentar el daño que inflige un aliado."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Ángel de la guarda",
+          "desc": "Vuelas hacia un aliado. Durante el vuelo, saltar te lanza hacia delante y agacharte te propulsa hacia arriba."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Resurrección",
+          "desc": "Resucitas a un aliado caído."
+        },
+        {
+          "slot": "ability3",
+          "key": "Cambio de arma",
+          "name": "Pistola caducea",
+          "desc": "Arma automática."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Valkiria",
+          "desc": "Te permite volar y potencia tus habilidades."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/mercy/"
+    },
+    "mizuki": {
+      "subrole": "Superviviente",
+      "summary": "Superviviente con aura sanadora pasiva: rebota el sombrero Kasa entre aliados, encadena enemigos y protege con el santuario Kekkai.",
+      "abilities": [
+        {
+          "slot": "passive",
+          "key": "Pasiva",
+          "name": "Aura reparadora",
+          "desc": "Sana a los aliados cercanos. Es más fuerte al infligir daño y sanar a otros."
+        },
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Guja espiritual",
+          "desc": "Un proyectil que rebota y daña a los enemigos."
+        },
+        {
+          "slot": "ability1",
+          "key": "Hab.",
+          "name": "Sanación Kasa",
+          "desc": "Lanza tu sombrero para que rebote entre los aliados y los sane."
+        },
+        {
+          "slot": "ability2",
+          "key": "Hab.",
+          "name": "Cadena vinculante",
+          "desc": "Lanza una cadena a un enemigo que frena su movimiento."
+        },
+        {
+          "slot": "ability3",
+          "key": "Hab.",
+          "name": "Regreso Katashiro",
+          "desc": "Da un salto hacia delante y obtén velocidad de movimiento aumentada. Vuelve a activarlo para teletransportarte de vuelta."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Santuario Kekkai",
+          "desc": "Crea un santuario que sana a los aliados en su interior y absorbe los proyectiles del enemigo que lo atraviesan."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/mizuki/",
+      "keysSource": "https://thegamehaus.com/overwatch/all-mizuki-overwatch-abilities-a-support-assasin/2026/02/04/"
+    },
+    "moira": {
+      "subrole": "Médico",
+      "summary": "Médico agresivo que alterna entre sanar con rayo y dañar a distancia, con orbes y evanescencia para reposicionarse.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Rayo biótico",
+          "desc": "Mantén pulsado para sanar a todos los aliados frente a ti. Consumes energía biótica."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Rayo biótico (fuego secundario)",
+          "desc": "Arma con haz de largo alcance. El daño infligido te sana y repone tu energía biótica."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Evanescencia",
+          "desc": "Desapareces, aceleras tu movimiento y te vuelves invulnerable, pero no puedes disparar."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Orbe biótico",
+          "desc": "Disparas una bola que rebota y que sana a los aliados cercanos o daña a los enemigos cercanos."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Coalescencia",
+          "desc": "Disparas un haz que sana a los aliados y daña a los enemigos."
+        }
+      ],
+      "verified": true,
+      "keysVerified": true,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/moira/"
+    },
+    "sombra": {
+      "subrole": "Estratega",
+      "summary": "Estratega de movilidad que cura con parches, debilita zonas con el ciberespacio y se reposiciona con la baliza.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Subfusil",
+          "desc": "Un arma automática de corto alcance."
+        },
+        {
+          "slot": "ability1",
+          "key": "Hab.",
+          "name": "Parche",
+          "desc": "Sana a un aliado de forma gradual hasta una cantidad determinada de salud. También puede piratear los packs de salud y la mayoría de los desplegables del enemigo."
+        },
+        {
+          "slot": "ability2",
+          "key": "Hab.",
+          "name": "Ciberespacio",
+          "desc": "Lanza un proyectil que explota al impactar y crea una zona que debilita a los enemigos y sana a los aliados."
+        },
+        {
+          "slot": "ability3",
+          "key": "Hab.",
+          "name": "Baliza de translocación",
+          "desc": "Lanzas una baliza y te teletransportas hasta ella. Tras teletransportarte, entras en sigilo durante un breve periodo de tiempo."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "PEM",
+          "desc": "Infliges daño a todos los enemigos cercanos según un porcentaje de su salud actual, los hackeas y destruyes las barreras a tu alrededor."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/sombra/"
+    },
+    "wuyang": {
+      "subrole": "Superviviente",
+      "summary": "Superviviente de agua: sana con un flujo pasivo, cabalga olas para moverse y derriba enemigos con su definitiva.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Bastón de Xuanwu",
+          "desc": "Dispara un orbe de agua dañino. Mantén para controlar su trayectoria y potenciar la explosión."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Flujo restaurativo",
+          "desc": "Dirige un flujo sanador pasivo hacia un aliado. Mantén sobre el objetivo para sanar manualmente a un ritmo más rápido, lo que consume recursos de sanación."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Ola guardiana",
+          "desc": "Envía una ola hacia delante que aumenta la cantidad de sanación que reciben los aliados y repele a los enemigos."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Torrente impetuoso",
+          "desc": "Desplázate sobre el agua para moverte más rápido y saltar más alto."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Estallido de marea",
+          "desc": "Protege a un aliado o a ti mismo con agua que detona tras unos instantes. La explosión derriba a los enemigos y sana enormemente al objetivo protegido."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/wuyang/",
+      "keysSource": "https://thegamehaus.com/overwatch-2/all-overwatch-2-wuyang-abilities-healing-waves/2025/08/13/"
+    },
+    "zenyatta": {
+      "subrole": "Estratega",
+      "summary": "Estratega a distancia que daña con orbes, debilita con discordia, sana con armonía y se vuelve invulnerable con trascendencia.",
+      "abilities": [
+        {
+          "slot": "primary",
+          "key": "Clic izq.",
+          "name": "Orbe de destrucción",
+          "desc": "Arma de proyectiles de energía."
+        },
+        {
+          "slot": "secondary",
+          "key": "Clic der.",
+          "name": "Orbe de destrucción (fuego secundario)",
+          "desc": "Cárgalo para lanzar más proyectiles."
+        },
+        {
+          "slot": "ability1",
+          "key": "Shift",
+          "name": "Orbe de armonía",
+          "desc": "Lanzas este orbe a un aliado para sanarlo."
+        },
+        {
+          "slot": "ability2",
+          "key": "E",
+          "name": "Orbe de discordia",
+          "desc": "Lanzas este orbe a un enemigo para aumentar el daño que sufre."
+        },
+        {
+          "slot": "ability3",
+          "key": "Cuerpo a cuerpo",
+          "name": "Patada veloz",
+          "desc": "El daño de los ataques cuerpo a cuerpo aumenta un 50 % y la repulsión aumenta de forma considerable."
+        },
+        {
+          "slot": "ultimate",
+          "key": "Q",
+          "name": "Trascendencia",
+          "desc": "Te vuelves invulnerable, te mueves más rápido y sanas a los aliados cercanos."
+        }
+      ],
+      "verified": true,
+      "keysVerified": false,
+      "source": "https://overwatch.blizzard.com/es-es/heroes/zenyatta/"
+    }
+  }
+}
